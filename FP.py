@@ -37,11 +37,11 @@ def make_request_using_cache(baseurl, params, headers={}):
     unique_ident = params_unique_combination(baseurl,params)
 
     if unique_ident in CACHE_DICTION:
-        print("Getting cached data...")
+        #print("Getting cached data...")
         return CACHE_DICTION[unique_ident]
 
     else:
-        print("Making a request for new data...")
+        #print("Making a request for new data...")
         resp = requests.get(baseurl, params, headers=headers)
         CACHE_DICTION[unique_ident] = json.loads(resp.text)
         dumped_json_cache = json.dumps(CACHE_DICTION)
@@ -208,7 +208,7 @@ def main():
         set_up_db()
         call_func = location_name(location, addToDB=True)
         call_func2 = YelpSearch(location)
-        menu = input('If you would like to see grahs of the data, type "menu" for options or "exit" to quit: ')
+        menu = input('If you would like to see graphs of the data, type "menu" for options or "exit" to quit: ')
         if menu == 'exit':
             break
         elif menu == 'menu':
