@@ -21,9 +21,13 @@ Instructions:
 Here are a few examples of interactions with the code:
 
 Emilys-MBP-2:FinalProj andrewconn$ python3 FP.py 
+
 What is your location or 'exit' to quit: Ann Arbor
+
 Here is a list of 10 restaurant recommendations with their ratings:
+
 Suggestion: Belly Deli (4.0)
+
 Suggestion: Broadway Cafe & Hoagie (4.5)
 Suggestion: Grange Kitchen & Bar (3.5)
 Suggestion: Avalon Cafe and Kitchen (4.0)
@@ -64,7 +68,7 @@ E: All of the graphs
 Which graph would you like to see or 'exit' to quit: a
 
 
-Emilys-MBP-2:FinalProj andrewconn$ python3 FP.py 
+Emilys-MBP-2:FinalProj andrewconn$ python3 FP.py
 What is your location or 'exit' to quit: Detroit
 Here is a list of 10 restaurant recommendations with their ratings:
 Suggestion: Avalon International Breads (4.5)
