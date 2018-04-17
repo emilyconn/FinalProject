@@ -10,6 +10,8 @@ cur = conn.cursor()
 
 def set_up_db():
 
+    cur.execute('DROP Table IF EXISTS Yelp')
+
     cur.execute("""CREATE TABLE IF NOT EXISTS Yelp(Id integer primary key, Restaurant text, Rating real, Price text, Address text, type text, Phone text, City integer)""")
 
     cur.execute("""CREATE TABLE IF NOT EXISTS Cities(Id integer primary key, CityName text, State text, Lat text, Long text, Country text)""")
@@ -186,6 +188,7 @@ def visualD(city):
     ratings = cur.execute('SELECT Rating, Price FROM Yelp JOIN Cities WHERE "{}"= CityName'.format(city))
     results = cur.fetchall()
     price_list = [len(tup[1]) for tup in results]
+    print(len(price_list))
     ratings_list = [tup[0] for tup in results]
     data4 = [go.Scatter(
             y=ratings_list,
