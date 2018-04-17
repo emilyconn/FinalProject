@@ -9,8 +9,6 @@ conn = sqlite3.connect('FP.db')
 cur = conn.cursor()
 
 def set_up_db():
-    cur.execute("DROP TABLE IF EXISTS Yelp")
-    cur.execute("DROP TABLE IF EXISTS Cities")
 
     cur.execute("""CREATE TABLE IF NOT EXISTS Yelp(Id integer primary key, Restaurant text, Rating real, Price text, Address text, type text, Phone text, City integer)""")
 
@@ -170,8 +168,6 @@ def visualC(city):
     ratings = cur.execute('SELECT Rating FROM Yelp JOIN Cities WHERE "{}"= CityName'.format(city))
     ratings_strings = [tup[0] for tup in cur.fetchall()]
     ratings_counts = {ratings : ratings_strings.count(ratings) for ratings in ratings_strings}
-    print (ratings_counts.keys())
-    print (ratings_counts.values())
 
     data3 = [go.Bar(
             y=list(ratings_counts.keys()),
@@ -206,13 +202,13 @@ def visualD(city):
 
 def main():
     while True:
-        location = input("What is your location: ").title()
+        location = input("What is your location or 'exit' to quit: ").title()
         if location == 'exit'.title():
             break
         set_up_db()
         call_func = location_name(location, addToDB=True)
         call_func2 = YelpSearch(location)
-        menu = input('If you would like to see grahs of the data, type "menu" for options: ')
+        menu = input('If you would like to see grahs of the data, type "menu" for options or "exit" to quit: ')
         if menu == 'exit':
             break
         elif menu == 'menu':
@@ -221,7 +217,7 @@ B: Pie chart of the Number of Restaraunts in the given location by Price Tier
 C: Bar chart of Number of Restaraunts in the gievn location by Rating
 D: Scatter plot of the Prive v. Rating in the given location
 E: All of the graphs""")
-            new_statement = input("Which graph would you like to see: ").upper()
+            new_statement = input("Which graph would you like to see or 'exit' to quit: ").upper()
             if new_statement == 'A':
                 visualA(location)
             elif new_statement == 'B':
