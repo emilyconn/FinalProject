@@ -10,7 +10,7 @@ cur = conn.cursor()
 
 def set_up_db():
 
-    cur.execute('DROP Table IF EXISTS Yelp')
+    #cur.execute('DROP Table IF EXISTS Yelp')
 
     cur.execute("""CREATE TABLE IF NOT EXISTS Yelp(Id integer primary key, Restaurant text, Rating real, Price text, Address text, type text, Phone text, City integer)""")
 
