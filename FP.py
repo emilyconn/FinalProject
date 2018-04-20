@@ -176,7 +176,7 @@ def visualC(city):
             x=list(ratings_counts.values()),
             orientation = "h"
     )]
-    layout3 = go.Layout(title = f'Number of Restaraunts in {city} by Rating', xaxis=dict(title='Ratings Count'),
+    layout3 = go.Layout(title = f'Number of Restaraunts in {city} by Rating', xaxis=dict(title='Number of Restaurants'),
     yaxis=dict(title='Ratings'))
     fig = go.Figure(data=data3, layout=layout3)
     py.plot(fig, filename=f'Number of Restaraunts in {city} by Rating')
@@ -188,7 +188,6 @@ def visualD(city):
     ratings = cur.execute('SELECT Rating, Price FROM Yelp JOIN Cities WHERE "{}"= CityName'.format(city))
     results = cur.fetchall()
     price_list = [len(tup[1]) for tup in results]
-    print(len(price_list))
     ratings_list = [tup[0] for tup in results]
     data4 = [go.Scatter(
             y=ratings_list,
